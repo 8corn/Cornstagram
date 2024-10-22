@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="477dp"
+    tools:context=".profilefragment.TagPeedFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/namemail_movingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/name_movingbar"
+                android:layout_width="215.63dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/Gray" />
+
+            <View
+                android:id="@+id/email_movingbar"
+                android:layout_width="215.63dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

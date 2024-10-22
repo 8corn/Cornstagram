@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.AddPhotoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="97dp"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:text="프로필 사진 추가" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="친구들이 회원님을 알아볼 수 있도록 프로필 사진을 추가하세요." />
+        
+        <ImageView
+            android:layout_width="229dp"
+            android:layout_height="226dp"
+            android:src="@drawable/profile_img"
+            android:layout_marginTop="177dp"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/linegray"
+            android:layout_marginTop="249.5dp" />
+
+        <Button
+            android:id="@+id/add_photo_nextbtn"
+            android:layout_width="335dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8.5dp"
+            android:background="@drawable/skybtn2"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="사진추가" />
+
+        <TextView
+            android:id="@+id/add_photo_skipbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.08dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/sky"
+            android:textSize="16sp"
+            android:text="건너뛰기" />
+
+    </LinearLayout>
+
+</RelativeLayout>

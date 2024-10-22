@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.AddAkaActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical" >
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textColor="@color/black"
+           android:textSize="26sp"
+           android:text="사용자 이름 만들기"
+           android:gravity="center_horizontal"
+           android:layout_marginTop="76dp" />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="21dp"
+           android:textSize="12sp"
+           android:text="새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지\n변경할 수 있습니다."
+           android:gravity="center_horizontal"/>
+
+       <com.google.android.material.textfield.TextInputLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/text_tool"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginTop="13dp">
+
+           <com.google.android.material.textfield.TextInputEditText
+               android:id="@+id/add_aka_name"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:paddingStart="8dp"
+               android:hint="사용자 이름"
+               android:background="@color/stream_ui_literal_transparent" />
+
+       </com.google.android.material.textfield.TextInputLayout>
+
+       <TextView
+           android:id="@+id/add_aka_errortxt"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/Red"
+           android:text="사용자 이름이 중복됩니다. 다른 이름를 선택해주세요."
+           android:layout_marginStart="48dp"
+           android:textSize="12sp"
+           android:visibility="invisible"/>
+
+       <Button
+           android:id="@+id/add_aka_nextbtn"
+           android:layout_width="335dp"
+           android:layout_height="48dp"
+           android:background="@drawable/skybtn2"
+           android:layout_marginTop="30dp"
+           android:layout_gravity="center_horizontal"
+           android:textColor="@color/white"
+           android:textSize="16sp"
+           android:text="다음" />
+
+   </LinearLayout>
+
+</RelativeLayout>

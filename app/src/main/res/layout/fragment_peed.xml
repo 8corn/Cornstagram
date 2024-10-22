@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="477dp"
+    tools:context=".profilefragment.PeedFragment">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/namemail_movingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/email_movingbar"
+                android:layout_width="215.63dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black" />
+
+            <View
+                android:id="@+id/name_movingbar"
+                android:layout_width="215.63dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/Gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/gilmon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/lizamon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/terialmon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/lizamon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/lopmon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/gilmon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/agumon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/impmon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/megalizamon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/gilmon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/lizamon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/terialmon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/gilmon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/megalizamon" />
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="141dp"
+                android:src="@drawable/terialmon" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.CheckAkaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/check_aka_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            android:text="님으로\n가입하시겠어요?"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="나중에 언제든지 사용자 이름을 변경할 수 있습니다."
+            android:gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/check_aka_next"
+            android:layout_width="335dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/skybtn2"
+            android:layout_gravity="center_horizontal"
+            android:text="가입하기"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/linegray"
+            android:layout_marginTop="540dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="121dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:text="이미 계정이 있으신가요?" />
+
+            <TextView
+                android:id="@+id/check_aka_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/bluesky"
+                android:text="로그인" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

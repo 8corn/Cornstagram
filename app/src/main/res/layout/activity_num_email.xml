@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.NumEmailActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="26sp"
+           android:text="전화번호 또는 이메일 주소 입력"
+           android:textColor="@color/black"
+           android:layout_marginTop="76dp"
+           android:gravity="center_horizontal" />
+
+       <LinearLayout
+           android:id="@+id/namemail_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="47dp">
+
+           <TextView
+               android:id="@+id/numemail_num_btn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="26sp"
+               android:text="전화번호"
+               android:textColor="@color/black"
+               android:layout_marginStart="83dp" />
+
+           <TextView
+               android:id="@+id/numemail_email_btn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="26sp"
+               android:textColor="@color/black"
+               android:text="이메일"
+               android:layout_marginStart="78dp"/>
+
+       </LinearLayout>
+
+       <FrameLayout
+           android:id="@+id/fragment_container"
+           android:layout_width="match_parent"
+           android:layout_height="600dp"
+           android:layout_marginTop="6dp" />
+
+   </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.FindNumActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="97dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:text="연락처 찾기" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="Cornstagram을 사용 중인 친구를 확인하고 원하는 친구를\n선택하여 팔로우해보세요." />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="133dp"
+            android:layout_marginStart="141dp"
+            android:src="@drawable/find_num" />
+
+        <TextView
+            android:id="@+id/find_num_moreinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="회원님의 연락처 정보가 주기적으로 동기화되어 서버에 저장됩니다. 연락처 정보\n를 삭제하려면 설정으로 이동하여 연결의 해제하세요. 더 알아보기"
+            android:clickable="true"
+            android:focusable="true"
+            android:autoLink="web" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11.5dp"
+            android:src="@drawable/linegray" />
+
+        <Button
+            android:id="@+id/find_num_nextbtn"
+            android:layout_width="335dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8.5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/skybtn2"
+            android:textColor="@color/white"
+            android:text="가입하기" />
+
+        <TextView
+            android:id="@+id/find_num_skipbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.08dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/sky"
+            android:text="건너뛰기" />
+
+    </LinearLayout>
+
+</RelativeLayout>

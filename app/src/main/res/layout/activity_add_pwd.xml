@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".join.AddPwdActivity">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            android:text="비밀번호 만들기"
+            android:layout_marginTop="76dp"
+            android:layout_marginStart="128dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="비밀번호를 저장할 수 있으므로 iCloud 기기에서 로그인\n정보를 입력하지 않아도 됩니다."
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:textSize="12sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_tool"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_pwd_pwdtext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="9dp"
+                android:hint="비밀번호"
+                android:background="@color/stream_ui_literal_transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_tool"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_pwd_pwdtext2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="9dp"
+                android:hint="비밀번호 확인"
+                android:background="@color/stream_ui_literal_transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <CheckBox
+                android:id="@+id/add_pwd_checkbtn"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="53dp"
+                android:button="@drawable/checkbtn_icon"
+                android:background="@drawable/checkbtn"
+                android:padding="0dp"/>
+
+            <TextView
+                android:id="@+id/add_pwd_checktext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:text="비밀번호 확인"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_pwd_nextbtn"
+            android:layout_width="335dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="25.5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="다음"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/skybtn2" />
+
+    </LinearLayout>
+
+</RelativeLayout>

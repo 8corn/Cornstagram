@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "899334564007",
+    "project_id": "cornstagram-7ba9f",
+    "storage_bucket": "cornstagram-7ba9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899334564007:android:a8ba27155c9dd719635382",
+        "android_client_info": {
+          "package_name": "com.corn.cornstagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClUxM6tJw0LYfdpRfuCAgjUfWLu9Ri9tU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

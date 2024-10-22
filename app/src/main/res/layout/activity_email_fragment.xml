@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    tools:context=".fragment.EmailFragment">
+
+    <LinearLayout
+        android:id="@+id/namemail_movingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/name_movingbar"
+            android:layout_width="170dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:background="@color/Gray" />
+
+        <View
+            android:id="@+id/email_movingbar"
+            android:layout_width="170dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/black" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/text_tool">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_email_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="9dp"
+            android:hint="이메일 주소"
+            android:inputType="textEmailAddress"
+            android:background="@color/stream_ui_literal_transparent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/frg_email_nextbtn"
+        android:layout_width="335dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="97dp"
+        android:background="@drawable/skybtn2"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</RelativeLayout>

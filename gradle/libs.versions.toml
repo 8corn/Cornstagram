@@ -1,0 +1,66 @@
+[versions]
+agp = "8.4.2"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.6"
+activityCompose = "1.9.2"
+composeBom = "2024.09.03"
+constraintlayout = "2.1.4"
+material = "1.12.0"
+appcompat = "1.7.0"
+activity = "1.9.2"
+firebase-bom = "33.4.0"
+firebase-database = "21.0.0"
+googleServices = "4.4.2"
+cardstackview = "2.3.4"
+navigation = "2.8.2"
+androidxNavigationSafeargsGradlePlugin = "2.8.2"
+streamChat = "6.4.3"
+sliding-root-nav = "1.1.1"
+circle-image-view = "3.1.0"
+firebaseFirestore = "25.1.0"
+retrofit = "2.9.0"
+gsonConverter = "2.9.0"
+
+[libraries]
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebase-database" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebase-auth = { module = "com.google.firebase:firebase-auth-ktx" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+cardstackview = { module = "com.yuyakaido.android:card-stack-view", version.ref = "cardstackview" }
+streamChat = { module = "io.getstream:stream-chat-android-ui-components", version.ref = "streamChat" }
+sliding-root-nav = { module = "com.yarolegovich:sliding-root-nav", version.ref = "sliding-root-nav" }
+circle-image-view = { module = "de.hdodenhof:circleimageview", version.ref = "circle-image-view" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gsonConverter" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+androidx-navigation-safe-args = { id ="androidx.navigation.safeargs.kotlin",version.ref ="androidxNavigationSafeargsGradlePlugin" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleServices = {id = "com.google.gms.google-services", version.ref = "googleServices"}
+

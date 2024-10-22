@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".others.ProfileEditActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/profile_edit_backbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp"
+                android:text="뒤로"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="109dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="프로필 편집" />
+            
+            <TextView
+                android:id="@+id/profile_edit_nextbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="104dp"
+                android:textColor="@color/sky"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="다음" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/linegray"
+            android:layout_marginTop="25dp" />
+
+        <ImageView
+            android:id="@+id/profile_edit_profile"
+            android:layout_width="129dp"
+            android:layout_height="129dp"
+            android:src="@drawable/profile"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/profile_edit_profileedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/sky"
+            android:textSize="14sp"
+            android:text="프로필 사진 바꾸기" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:src="@drawable/linegray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46.5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:textSize="17sp"
+                android:text="이름" />
+            
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="77dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profile_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/stream_ui_literal_transparent"
+                    android:textSize="17sp"
+                    android:hint="이름" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:src="@drawable/linegray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46.5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:text="사용자 이름" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profile_edit_aka"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/stream_ui_literal_transparent"
+                    android:textSize="17sp"
+                    android:hint="사용자 이름" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:src="@drawable/linegray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46.5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:text="웹 사이트" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profile_edit_web"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/stream_ui_literal_transparent"
+                    android:textSize="17sp"
+                    android:hint="웹 사이트" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:src="@drawable/linegray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46.5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:text="소개" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="77dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profile_edit_myself"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/stream_ui_literal_transparent"
+                    android:textSize="17sp"
+                    android:hint="소개" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/linegray" />
+
+        <TextView
+            android:id="@+id/profile_edit_changeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/sky"
+            android:textSize="17sp"
+            android:text="프로페셔널 계정으로 전환" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/linegray" />
+
+        <TextView
+            android:id="@+id/profile_edit_editme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/sky"
+            android:textSize="17sp"
+            android:text="개인정보 설정" />
+
+    </LinearLayout>
+
+</RelativeLayout>

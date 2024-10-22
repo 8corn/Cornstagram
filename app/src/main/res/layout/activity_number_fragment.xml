@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    tools:context=".fragment.NumberFragment">
+
+    <LinearLayout
+        android:id="@+id/namemail_movingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <View
+            android:id="@+id/name_movingbar"
+            android:layout_width="170dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/email_movingbar"
+            android:layout_width="170dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/Gray" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/country_code_number"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/spinner_background"
+        android:popupBackground="@color/white"
+        android:spinnerMode="dropdown"
+        android:dropDownVerticalOffset="10dp"
+        android:layout_alignParentStart="true"
+        android:entries="@array/country_codes" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_toEndOf="@id/country_code_number"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/text_tool"
+        android:layout_marginStart="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_number_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="전화번호"
+            android:inputType="phone"
+            android:paddingStart="10dp"
+            android:background="@color/stream_ui_literal_transparent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/frg_num_nextbtn"
+        android:layout_width="335dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="97dp"
+        android:background="@drawable/skybtn2"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="90dp"
+        android:textSize="10sp"
+        android:textAlignment="center"
+        android:text="Cornstagram의 업데이트 내용을 SMS로 수신할 수 있으며,\n언제든지 수신을 취소할 수 있습니다." />
+
+</RelativeLayout>

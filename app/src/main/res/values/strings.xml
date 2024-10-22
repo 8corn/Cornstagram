@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">fuck</string>
+
+    <string-array name="country_codes">
+        <item>KR +82</item>
+        <item>US +1</item>
+        <item>JP +81</item>
+        <item>CN +86</item>
+        <item>DE +49</item>
+    </string-array>
+</resources>
