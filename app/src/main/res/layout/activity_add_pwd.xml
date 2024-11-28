@@ -62,31 +62,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <CheckBox
-                android:id="@+id/add_pwd_checkbtn"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="53dp"
-                android:button="@drawable/checkbtn_icon"
-                android:background="@drawable/checkbtn"
-                android:padding="0dp"/>
-
-            <TextView
-                android:id="@+id/add_pwd_checktext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:text="비밀번호 확인"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
         <Button
             android:id="@+id/add_pwd_nextbtn"
             android:layout_width="335dp"

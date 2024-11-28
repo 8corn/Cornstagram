@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="477dp"
     tools:context=".profilefragment.PeedFragment">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,115 +33,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/peed_rv_profile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/gilmon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/lizamon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/terialmon" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/lizamon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/lopmon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/gilmon" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/agumon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/impmon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/megalizamon" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/gilmon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/lizamon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/terialmon" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/gilmon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/megalizamon" />
-
-            <ImageView
-                android:layout_width="141dp"
-                android:layout_height="141dp"
-                android:src="@drawable/terialmon" />
-
-        </LinearLayout>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
