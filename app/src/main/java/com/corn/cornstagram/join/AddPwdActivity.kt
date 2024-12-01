@@ -39,28 +39,31 @@ class AddPwdActivity : AppCompatActivity() {
     }
 
     private fun signup(email: String?, phonenum: String?, password: String) {
-        when {
-            !email.isNullOrEmpty() -> {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser?.uid ?: System.currentTimeMillis().toString()
-                            saveUserToFirestore(user, email, phonenum, password)
-                        }else {
-                            Toast.makeText(this, "회원가입 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                        }
+        if (!email.isNullOrEmpty()) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser?.uid ?: System.currentTimeMillis().toString()
+                        saveUserToFirestore(user, email, null, password)
+                    } else {
+                        Toast.makeText(this, "회원가입 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
-            }
-            !phonenum.isNullOrEmpty() -> {
-                val uid = System.currentTimeMillis().toString()
-                saveUserToFirestore(uid, email, phonenum, password)
-            } else -> {
+                }
+        } else if (!phonenum.isNullOrEmpty()) {
+            val uid = System.currentTimeMillis().toString()
+            saveUserToFirestore(uid, null, phonenum, password)
+        } else {
             Toast.makeText(this, "이메일 또는 전화번호를 입력하시오", Toast.LENGTH_SHORT).show()
-        }
         }
     }
 
-    private fun saveUserToFirestore(uid: String, email: String?, phonenum: String?, password: String) {
+
+    private fun saveUserToFirestore(
+        uid: String,
+        email: String?,
+        phonenum: String?,
+        password: String
+    ) {
         val userData = hashMapOf(
             "uid" to uid,
             "email" to email,
@@ -78,6 +81,5 @@ class AddPwdActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "회원 정보 저장 실패: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
     }
 }

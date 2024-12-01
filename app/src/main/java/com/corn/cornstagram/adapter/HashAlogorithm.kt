@@ -1,4 +1,4 @@
-package com.corn.cornstagram
+package com.corn.cornstagram.adapter
 
 import java.security.SecureRandom
 import java.util.Base64
