@@ -2,6 +2,7 @@ package com.corn.cornstagram.join
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.databinding.ActivityAddPwdBinding
@@ -40,6 +41,7 @@ class AddPwdActivity : AppCompatActivity() {
 
     private fun signup(email: String?, phonenum: String?, password: String) {
         if (!email.isNullOrEmpty()) {
+            Log.d("SignupDebug", "email check")
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

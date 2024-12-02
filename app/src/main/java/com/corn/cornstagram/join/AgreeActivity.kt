@@ -3,13 +3,10 @@ package com.corn.cornstagram.join
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.corn.cornstagram.R
 import com.corn.cornstagram.databinding.ActivityAgreeBinding
-import com.google.protobuf.Internal.BooleanList
 
 class AgreeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAgreeBinding
@@ -55,8 +52,15 @@ class AgreeActivity : AppCompatActivity() {
         }
 
         binding.agreeNextBtn.setOnClickListener {
-            val intent = Intent(this, AddAkaActivity::class.java)
-            startActivity(intent)
+            if (isGpsChecked && isUseChecked && isDataChecked) {
+                val intent = Intent(this, AddAkaActivity::class.java)
+                startActivity(intent)
+            } else if (isAllChecked){
+                val intent = Intent(this, AddAkaActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "모든 약관에 동의해야합니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

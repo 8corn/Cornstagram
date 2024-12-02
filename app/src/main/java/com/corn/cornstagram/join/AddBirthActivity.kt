@@ -48,6 +48,8 @@ class AddBirthActivity : AppCompatActivity() {
             val selectedDate = binding.addBirthText.text.toString().trim()
             if(selectedDate.isNotEmpty()) {
                 saveDateToFirebase(selectedDate)
+                val intent = Intent(this, AgreeActivity::class.java)
+                startActivity(intent)
             } else {
                 binding.addBirthText.error = "생년월일을 선택하세요"
             }
@@ -61,10 +63,6 @@ class AddBirthActivity : AppCompatActivity() {
             val userRef = database.getReference("users").child(userId)
 
             userRef.child("birthDate").setValue(selectedDate)
-                .addOnSuccessListener {
-                    Log.d("Firebase", "생년월일 저장 성공")
-                    startActivity(Intent(this, AgreeActivity::class.java))
-                }
                 .addOnFailureListener {
                     Log.e("Firebase", "생년월일 저장 실패", it)
                 }

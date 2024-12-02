@@ -15,7 +15,7 @@ class CheckAkaActivity : AppCompatActivity() {
         binding = ActivityCheckAkaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val akaName = intent.getStringExtra("AKA_NAME")
+        val akaName = intent.getStringExtra("akaname")
 
         binding.checkAkaTxt.text = "$akaName 님으로\n가입하시겠어요?"
 
