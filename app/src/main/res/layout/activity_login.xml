@@ -25,13 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/cornstagramlogo"
-            android:layout_marginTop="99dp"
-            android:layout_marginStart="102dp" />
+            android:layout_marginTop="104dp"
+            android:layout_gravity="center"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="73.87dp"
+            android:layout_marginTop="78.87dp"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="47dp"
             android:background="@drawable/text_tool">
@@ -68,7 +68,7 @@
             android:id="@+id/login_login_btn"
             android:layout_width="326dp"
             android:layout_height="61dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="244dp"
             android:background="@drawable/skybtn"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
@@ -90,35 +90,14 @@
             android:text="또는"
             android:textSize="16sp"
             android:layout_marginTop="10dp" />
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="7dp">
 
-            <ImageView
-                android:id="@+id/login_naver_btn"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/naverlogin"
-                android:layout_marginStart="90dp" />
-
-            <ImageView
-                android:id="@+id/login_kakao_btn"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/kakaologin"
-                android:layout_marginStart="20dp" />
-
-            <ImageView
-                android:id="@+id/login_apple_btn"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/applelogin"
-                android:layout_marginStart="20dp" />
-
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/login_google_login"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/google_btn"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
 
     </LinearLayout>
 

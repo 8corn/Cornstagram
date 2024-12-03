@@ -24,15 +24,6 @@ class AddBirthActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        binding.addBirthText.setOnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                v.performClick()
-                v.clearFocus()
-                return@setOnTouchListener true
-            }
-            false
-        }
-
         val now = LocalDate.now()
 
         binding.addBirthText.setOnClickListener {

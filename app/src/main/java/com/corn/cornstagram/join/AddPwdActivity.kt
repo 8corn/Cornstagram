@@ -29,8 +29,8 @@ class AddPwdActivity : AppCompatActivity() {
         binding.addPwdNextbtn.setOnClickListener {
             val password = binding.addPwdPwdtext.text.toString().trim()
             val confirmPassword = binding.addPwdPwdtext2.text.toString().trim()
-            if (password.isEmpty() || password.length < 6) {
-                binding.addPwdPwdtext.error = "6자리이상 입력하시오."
+            if (password.isEmpty() || password.length < 8) {
+                binding.addPwdPwdtext.error = "영소문자, 특수문자, 숫자를 포함하여 8자 이상 입력하시오."
             } else if (password != confirmPassword) {
                 binding.addPwdPwdtext2.error = "비밀번호가 일치하지 않습니다."
             } else {
@@ -60,12 +60,7 @@ class AddPwdActivity : AppCompatActivity() {
     }
 
 
-    private fun saveUserToFirestore(
-        uid: String,
-        email: String?,
-        phonenum: String?,
-        password: String
-    ) {
+    private fun saveUserToFirestore(uid: String, email: String?, phonenum: String?, password: String) {
         val userData = hashMapOf(
             "uid" to uid,
             "email" to email,

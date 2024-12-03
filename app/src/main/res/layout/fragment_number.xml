@@ -17,7 +17,7 @@
             android:layout_width="170dp"
             android:layout_height="4dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="32dp"
             android:background="@color/black" />
 
         <View
@@ -34,7 +34,7 @@
         android:id="@+id/country_code_number"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/spinner_background"
         android:popupBackground="@color/white"

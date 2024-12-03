@@ -17,7 +17,7 @@
             android:layout_width="170dp"
             android:layout_height="4dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="32dp"
             android:background="@color/Gray" />
 
         <View
@@ -33,7 +33,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/text_tool">
 
@@ -52,7 +52,7 @@
         android:id="@+id/frg_email_nextbtn"
         android:layout_width="335dp"
         android:layout_height="48dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="97dp"
         android:background="@drawable/skybtn2"
         android:text="다음"

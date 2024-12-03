@@ -62,11 +62,20 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtcolor"
+            android:textSize="12sp"
+            android:text="영소문자, 특수문자, 숫자를 포함하여 8자 이상 입력하시오."
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="39dp" />
+
         <Button
             android:id="@+id/add_pwd_nextbtn"
             android:layout_width="335dp"
             android:layout_height="48dp"
-            android:layout_marginTop="25.5dp"
+            android:layout_marginTop="15.5dp"
             android:layout_gravity="center_horizontal"
             android:text="다음"
             android:textSize="16sp"
