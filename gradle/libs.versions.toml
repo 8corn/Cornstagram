@@ -22,6 +22,7 @@ streamChat = "6.4.3"
 sliding-root-nav = "1.1.1"
 circle-image-view = "3.1.0"
 firebaseFirestore = "25.1.1"
+firebase-storage = "19.1.1"
 retrofit = "2.9.0"
 gsonConverter = "2.9.0"
 playServicesAuth = "21.2.0"
@@ -57,6 +58,7 @@ streamChat = { module = "io.getstream:stream-chat-android-ui-components", versio
 sliding-root-nav = { module = "com.yarolegovich:sliding-root-nav", version.ref = "sliding-root-nav" }
 circle-image-view = { module = "de.hdodenhof:circleimageview", version.ref = "circle-image-view" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebase-storage" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gsonConverter" }
 

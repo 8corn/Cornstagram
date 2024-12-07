@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         loadFragment(MainFragment())
 
         binding.mainBottomNav.itemIconTintList = null
-        binding.mainBottomNav.itemIconSize = resources.getDimensionPixelSize(android.R.dimen.thumbnail_width)
+        binding.mainBottomNav.itemIconSize = resources.getDimensionPixelSize(R.dimen.default_icon_size)
 
         binding.mainBottomNav.setOnItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
@@ -36,8 +36,6 @@ class MainActivity : AppCompatActivity() {
             loadFragment(selectedFragment!!)
             true
         }
-
-
     }
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()

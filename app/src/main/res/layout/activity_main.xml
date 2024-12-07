@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_menu"
+            app:itemIconSize="24dp"
             app:labelVisibilityMode="unlabeled"
             app:itemIconTint="@null"
             android:background="@color/white" />
