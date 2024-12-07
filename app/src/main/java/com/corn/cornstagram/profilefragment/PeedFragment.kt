@@ -33,9 +33,7 @@ class PeedFragment : Fragment() {
             Profiles(R.drawable.impmon, "impmon", "impmon", 2023),
             Profiles(R.drawable.agumon, "agumon", "agumon", 2024),
         )
-
         binding.peedRvProfile.layoutManager = GridLayoutManager(context, 3)
         binding.peedRvProfile.adapter = ProfilesAdapter(profileList)
     }
-
 }
