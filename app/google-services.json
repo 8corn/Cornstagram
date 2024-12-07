@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "899334564007",
     "project_id": "cornstagram-7ba9f",
-    "storage_bucket": "cornstagram-7ba9f.appspot.com"
+    "storage_bucket": "cornstagram-7ba9f.firebasestorage.app"
   },
   "client": [
     {
@@ -12,7 +12,20 @@
           "package_name": "com.corn.cornstagram"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "899334564007-8rs2rhi68ih2hm6epvji7jl6u49e9fq4.apps.googleusercontent.com",
+          "client_type": 3,
+          "android_info": {
+            "package_name": "com.corn.cornstagram",
+            "certificate_hash": "1561c511a39467e9dbd9898f0b4e50d301fbd2ff"
+          }
+        },
+        {
+          "client_id": "899334564007-pvp5mnkcgho464fgisnb5krbbgp0fpo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyClUxM6tJw0LYfdpRfuCAgjUfWLu9Ri9tU"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899334564007-pvp5mnkcgho464fgisnb5krbbgp0fpo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

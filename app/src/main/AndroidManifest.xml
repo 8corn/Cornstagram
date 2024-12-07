@@ -13,28 +13,7 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".profilefragment.TagPeedFragment"
-            android:exported="false" />
-        <activity
-            android:name=".profilefragment.PeedFragment"
-            android:exported="false" />
-        <activity
             android:name=".others.ProfileEditActivity"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.ProfileFragment"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.LikeFragment"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.PlusFragment"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.SearchFragment"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.MainFragment"
             android:exported="false" />
         <activity
             android:name=".join.AddPhotoActivity"
@@ -62,12 +41,6 @@
             android:exported="false" />
         <activity
             android:name=".join.AddNameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.EmailFragment"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.NumberFragment"
             android:exported="false" />
         <activity
             android:name=".join.NumEmailActivity"

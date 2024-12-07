@@ -15,7 +15,7 @@ class TagPeedFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTagPeedBinding.inflate(inflater, container, false)
         return binding.root
     }
