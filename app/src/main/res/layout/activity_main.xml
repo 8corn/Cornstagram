@@ -14,7 +14,7 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_control_nav"
             android:layout_width="match_parent"
-            android:layout_height="856dp"
+            android:layout_height="875dp"
             app:defaultNavHost="true" />
 
         <ImageView
@@ -25,12 +25,12 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottom_nav"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_nav_menu"
-            app:itemIconSize="24dp"
-            app:labelVisibilityMode="unlabeled"
+            android:layout_height="81dp"
+            android:background="@color/white"
+            app:itemIconSize="30dp"
             app:itemIconTint="@null"
-            android:background="@color/white" />
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_nav_menu" />
 
     </LinearLayout>
 
