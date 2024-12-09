@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.cardstackview)
     implementation(libs.streamChat)
+    implementation(libs.glide)
     implementation(libs.sliding.root.nav)
     implementation(libs.circle.image.view)
     implementation(libs.retrofit)

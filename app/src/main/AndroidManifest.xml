@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".PlusPhotoActivity"
+            android:exported="false" />
+        <activity
             android:name=".others.ProfileEditActivity"
             android:exported="false" />
         <activity

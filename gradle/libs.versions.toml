@@ -26,6 +26,7 @@ firebase-storage = "21.0.1"
 retrofit = "2.9.0"
 gsonConverter = "2.9.0"
 playServicesAuth = "21.2.0"
+glide = "4.15.1"
 
 [libraries]
 firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebase-database" }
@@ -62,6 +63,7 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gsonConverter" }
 facebook-login = { module = "com.facebook.android:facebook-login", version = "17.0.1" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
