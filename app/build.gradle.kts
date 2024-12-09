@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
+    implementation(libs.facebook.login)
     implementation(libs.play.services.auth)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)

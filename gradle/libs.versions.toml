@@ -22,7 +22,7 @@ streamChat = "6.4.3"
 sliding-root-nav = "1.1.1"
 circle-image-view = "3.1.0"
 firebaseFirestore = "25.1.1"
-firebase-storage = "19.1.1"
+firebase-storage = "21.0.1"
 retrofit = "2.9.0"
 gsonConverter = "2.9.0"
 playServicesAuth = "21.2.0"
@@ -61,6 +61,7 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebase-storage" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gsonConverter" }
+facebook-login = { module = "com.facebook.android:facebook-login", version = "17.0.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
