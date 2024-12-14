@@ -4,11 +4,11 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-01T06:30:28.228878Z">
+        <DropdownSelection timestamp="2024-12-14T12:03:13.572636Z">
           <Target type="DEFAULT_BOOT">
-            <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/kimjeong-gwon/.android/avd/IPhone_16_pro_max.avd" />
-            </handle>
+            <template>
+              <DeviceId pluginId="FirebaseDirectAccess" type="TEMPLATE" identifier="model_id=q6q/34" />
+            </template>
           </Target>
         </DropdownSelection>
         <DialogSelection />

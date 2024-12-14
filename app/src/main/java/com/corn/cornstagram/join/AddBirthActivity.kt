@@ -3,18 +3,18 @@ package com.corn.cornstagram.join
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.databinding.ActivityAddBirthBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDate
 
 class AddBirthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBirthBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +23,13 @@ class AddBirthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         val now = LocalDate.now()
+        val name = intent.getStringExtra("name")
+        val email = intent.getStringExtra("email")
+        val phonenum = intent.getStringExtra("phonenum")
+        val pwd = intent.getStringExtra("password")
 
         binding.addBirthText.setOnClickListener {
             DatePickerDialog(this, android.app.AlertDialog.THEME_HOLO_DARK,
@@ -36,29 +41,39 @@ class AddBirthActivity : AppCompatActivity() {
         }
 
         binding.addBirthNextbtn.setOnClickListener {
-            val selectedDate = binding.addBirthText.text.toString().trim()
-            if(selectedDate.isNotEmpty()) {
-                saveDateToFirebase(selectedDate)
-                val intent = Intent(this, AgreeActivity::class.java)
-                startActivity(intent)
+            val birth = binding.addBirthText.text.toString().trim()
+
+            if(birth.isNotEmpty()) {
+                saveToFirebase(email, phonenum, pwd, name, birth)
             } else {
                 binding.addBirthText.error = "생년월일을 선택하세요"
             }
         }
-    }
-    private fun saveDateToFirebase(selectedDate: String) {
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            val database = FirebaseDatabase.getInstance()
-            val userRef = database.getReference("users").child(userId)
 
-            userRef.child("birthDate").setValue(selectedDate)
-                .addOnFailureListener {
-                    Log.e("Firebase", "생년월일 저장 실패", it)
-                }
-        } else {
-            Log.e("Firebase", "사용자가 로그인되어 있지 않음")
+        binding.addBirthSkip.setOnClickListener {
+            saveToFirebase(email, phonenum, pwd, name, null)
         }
+    }
+    private fun saveToFirebase(email: String?, phonenum: String?, pwd: String?, name: String?, birth: String?) {
+        val uid = System.currentTimeMillis().toString()
+        val userData = hashMapOf(
+            "uid" to uid,
+            "email" to email,
+            "phonenum" to phonenum,
+            "password" to pwd,
+            "name" to name,
+            "birth" to (birth ?: "null"),
+        )
+        firestore.collection("users")
+            .document(uid)
+            .set(userData)
+            .addOnSuccessListener {
+                val intent = Intent(this, AgreeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "회원 정보 저장 실패: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }

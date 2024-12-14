@@ -170,7 +170,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "아이디와 비밀번호를 입력해주시오.", Toast.LENGTH_SHORT).show()
             return
         }
-        auth.createUserWithEmailAndPassword(binding.emailLogin.text.toString(), binding.pwdLogin.text.toString())
+        auth.signInWithEmailAndPassword(binding.emailLogin.text.toString(), binding.pwdLogin.text.toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     moveMainPage(task.result?.user)

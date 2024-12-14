@@ -1,6 +1,9 @@
 package com.corn.cornstagram
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.corn.cornstagram.databinding.ActivityMainBinding
@@ -12,6 +15,9 @@ import com.corn.cornstagram.fragment.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var toolbarUsername: TextView
+    private lateinit var toolbarBtnBack: ImageView
+    private lateinit var toolbarTitleImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +42,18 @@ class MainActivity : AppCompatActivity() {
             loadFragment(selectedFragment!!)
             true
         }
+        binding.mainBottomNav.selectedItemId = R.id.nav_home
     }
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_control_nav, fragment)
             .commit()
+    }
+
+    private fun updateToolbar(userId: String?) {
+        toolbarUsername.text = userId
+        toolbarTitleImage.visibility = View.GONE
+        toolbarUsername.visibility = View.VISIBLE
+        toolbarBtnBack.visibility = View.VISIBLE
     }
 }

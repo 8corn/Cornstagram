@@ -86,6 +86,15 @@
             android:textSize="16sp"
             android:text="다음" />
 
+        <TextView
+            android:id="@+id/add_birth_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/txtcolor"
+            android:textSize="12sp"
+            android:text="건너뛰기" />
 
     </LinearLayout>
 

@@ -8,4 +8,15 @@
         <item>CN +86</item>
         <item>DE +49</item>
     </string-array>
+
+    <string name="signout">Signout</string>
+
+    <string name="post">Post</string>
+    <string name="following">Following</string>
+    <string name="follower">Follower</string>
+    <string name="follow">Follow</string>
+    <string name="follow_cancel">Follow cancel</string>
+    <string name="profile">Profile</string>
+    <string name="count_0">0</string>
+
 </resources>

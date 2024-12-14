@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.11.00"
+composeBom = "2024.12.01"
 constraintlayout = "2.2.0"
 material = "1.12.0"
 appcompat = "1.7.0"
@@ -16,8 +16,8 @@ firebase-bom = "33.7.0"
 firebase-database = "21.0.0"
 googleServices = "4.4.2"
 cardstackview = "2.3.4"
-navigation = "2.8.4"
-androidxNavigationSafeargsGradlePlugin = "2.8.4"
+navigation = "2.8.5"
+androidxNavigationSafeargsGradlePlugin = "2.8.5"
 streamChat = "6.4.3"
 sliding-root-nav = "1.1.1"
 circle-image-view = "3.1.0"
@@ -25,8 +25,10 @@ firebaseFirestore = "25.1.1"
 firebase-storage = "21.0.1"
 retrofit = "2.9.0"
 gsonConverter = "2.9.0"
-playServicesAuth = "21.2.0"
+playServicesAuth = "21.3.0"
 glide = "4.15.1"
+slidingpanelayout = "1.2.0"
+
 
 [libraries]
 firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebase-database" }
@@ -64,10 +66,10 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gsonConverter" }
 facebook-login = { module = "com.facebook.android:facebook-login", version = "17.0.1" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-slidingpanelayout = { module = "androidx.slidingpanelayout:slidingpanelayout", version.ref = "slidingpanelayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 androidx-navigation-safe-args = { id ="androidx.navigation.safeargs.kotlin",version.ref ="androidxNavigationSafeargsGradlePlugin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 googleServices = {id = "com.google.gms.google-services", version.ref = "googleServices"}
-
