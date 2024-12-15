@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.R
 import com.corn.cornstagram.databinding.ActivityAgreeBinding
+import java.time.LocalDate
 
 class AgreeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAgreeBinding
@@ -20,6 +21,12 @@ class AgreeActivity : AppCompatActivity() {
 
         binding = ActivityAgreeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val name = intent.getStringExtra("name")
+        val email = intent.getStringExtra("email")
+        val phonenum = intent.getStringExtra("phonenum")
+        val pwd = intent.getStringExtra("password")
+        val birth = intent.getStringExtra("birth")
 
         fun handleCheckboxClick(imageView: ImageView, isChecked: Boolean): Boolean {
             imageView.setImageResource(if (isChecked) R.drawable.checkbtn_circle_icon else R.drawable.checkbtn_circle)
@@ -54,9 +61,19 @@ class AgreeActivity : AppCompatActivity() {
         binding.agreeNextBtn.setOnClickListener {
             if (!isGpsChecked && !isUseChecked && !isDataChecked) {
                 val intent = Intent(this, AddAkaActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("phonenum", phonenum)
+                intent.putExtra("password", pwd)
+                intent.putExtra("name", name)
+                intent.putExtra("birth", birth)
                 startActivity(intent)
             } else if (!isAllChecked){
                 val intent = Intent(this, AddAkaActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("phonenum", phonenum)
+                intent.putExtra("password", pwd)
+                intent.putExtra("name", name)
+                intent.putExtra("birth", birth)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "모든 약관에 동의해야합니다.", Toast.LENGTH_SHORT).show()

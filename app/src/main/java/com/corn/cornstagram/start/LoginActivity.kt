@@ -1,9 +1,7 @@
 package com.corn.cornstagram.start
 
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -39,8 +37,6 @@ import java.security.NoSuchAlgorithmException
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private val TAG = this.javaClass.simpleName
-    private var GOOGLE_LOGIN_CODE = 9001
     private lateinit var googleSignInClient: GoogleSignInClient
 
     private lateinit var callbackManager: CallbackManager
@@ -52,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account)
             } catch (e: ApiException) {
-                Log.e(TAG, "Google Login 실패", e)
+                Log.e("TAG", "Google Login 실패", e)
             }
         }
     }
@@ -111,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 val md = MessageDigest.getInstance("SHA")
                 md.update(signature.toByteArray())
                 val hashKey = Base64.encodeToString(md.digest(), Base64.DEFAULT)
-                Log.i(TAG, "Hash Key: $hashKey")
+                Log.i("TAG", "Hash Key: $hashKey")
             }
         } catch (e: NoSuchAlgorithmException) {
             Log.e("Tag", "printHashKey()", e)
@@ -148,11 +144,11 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onCancel() {
-                    Log.d(TAG, "Facebook 로그인 취소")
+                    Log.d("TAG", "Facebook 로그인 취소")
                 }
 
                 override fun onError(error: FacebookException) {
-                    Log.e(TAG, "Facebook 로그인 에러: ${error.message}")
+                    Log.e("TAG", "Facebook 로그인 에러: ${error.message}")
                 }
             })
     }
@@ -221,7 +217,7 @@ class LoginActivity : AppCompatActivity() {
                     moveMainPage(task.result?.user)
                 } else {
                     task.exception?.let { exception ->
-                        Log.e(TAG, "이메일 로그인 오류", exception)
+                        Log.e("TAG", "이메일 로그인 오류", exception)
                         Toast.makeText(this, "로그인 실패 : ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -246,7 +242,7 @@ class LoginActivity : AppCompatActivity() {
                                 moveMainPage(task.result?.user)
                             } else {
                                 task.exception?.let { exception ->
-                                    Log.e(TAG, "전화번호 인증 실패", exception)
+                                    Log.e("TAG", "전화번호 인증 실패", exception)
                                     Toast.makeText(this@LoginActivity, "로그인 실패 : ${exception.localizedMessage}" ,Toast.LENGTH_SHORT).show()
                                 }
                             }
@@ -254,12 +250,12 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
-                    Log.e(TAG, "전화번호 인증 실패", e)
+                    Log.e("TAG", "전화번호 인증 실패", e)
                     Toast.makeText(this@LoginActivity, "전화번호 인증 실패: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
-                    Log.d(TAG, "인증 코드 전송됨: $verificationId")
+                    Log.d("TAG", "인증 코드 전송됨: $verificationId")
                     val intent = Intent(this@LoginActivity, VerificationActivity::class.java)
                     intent.putExtra("verificationId", verificationId)
                     startActivity(intent)
