@@ -1,11 +1,13 @@
-package com.corn.cornstagram
+package com.corn.cornstagram.start
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.corn.cornstagram.MainActivity
 import com.corn.cornstagram.databinding.ActivityVerificationBinding
+import com.corn.cornstagram.join.AddNameActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -48,7 +50,7 @@ class VerificationActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 binding.verificationBar.visibility = View.GONE
                 if (task.isSuccessful) {
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, AddNameActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {

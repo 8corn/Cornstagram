@@ -25,11 +25,17 @@ class AddNameActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, AddPwdActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("phonenum", phonenum)
-            intent.putExtra("name", name)
-            startActivity(intent)
+            if (!phonenum.isNullOrEmpty()) {
+                val intent = Intent(this, AddBirthActivity::class.java)
+                intent.putExtra("phonenum", phonenum)
+                intent.putExtra("name", name)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, AddPwdActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("name", name)
+                startActivity(intent)
+            }
         }
     }
 }

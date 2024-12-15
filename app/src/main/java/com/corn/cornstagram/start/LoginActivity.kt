@@ -8,9 +8,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.corn.cornstagram.MainActivity
 import com.corn.cornstagram.R
-import com.corn.cornstagram.VerificationActivity
 import com.corn.cornstagram.databinding.ActivityLoginBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -214,7 +214,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(loginId, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    moveMainPage(task.result?.user)
+                    moveMainPage(auth.currentUser)
                 } else {
                     task.exception?.let { exception ->
                         Log.e("TAG", "이메일 로그인 오류", exception)
@@ -229,35 +229,40 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         }
-
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phonenum)
             .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS)
             .setActivity(this)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
                 override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                     auth.signInWithCredential(credential)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                moveMainPage(task.result?.user)
+                                val user = auth.currentUser
+                                if (user?.phoneNumber.isNullOrEmpty()) {
+                                    Toast.makeText(this@LoginActivity, "등록되지 않은 전화번호입니다.", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    moveMainPage(user)
+                                }
                             } else {
                                 task.exception?.let { exception ->
                                     Log.e("TAG", "전화번호 인증 실패", exception)
-                                    Toast.makeText(this@LoginActivity, "로그인 실패 : ${exception.localizedMessage}" ,Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this@LoginActivity, "로그인 실패 : ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
-                    Log.e("TAG", "전화번호 인증 실패", e)
+                    Log.e("TAG", "전화번호 인증 실패 2", e)
                     Toast.makeText(this@LoginActivity, "전화번호 인증 실패: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
-                    Log.d("TAG", "인증 코드 전송됨: $verificationId")
+                    Log.d("TAG", "인증 코드 전송됨: ${verificationId}")
                     val intent = Intent(this@LoginActivity, VerificationActivity::class.java)
-                    intent.putExtra("verificationId", verificationId)
+                    intent.putExtra("vereticationId", verificationId)
                     startActivity(intent)
                 }
             })

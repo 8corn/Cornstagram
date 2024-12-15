@@ -16,6 +16,7 @@ import com.corn.cornstagram.others.ProfileEditActivity
 import com.corn.cornstagram.profilefragment.PeedFragment
 import com.corn.cornstagram.profilefragment.TagPeedFragment
 import com.corn.cornstagram.start.LoginActivity
+import com.corn.cornstagram.start.StartActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -101,7 +102,7 @@ class ProfileFragment : Fragment() {
                 }
                 R.id.logout_item -> {
                     auth.signOut()
-                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    val intent = Intent(requireContext(), StartActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     true
