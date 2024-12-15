@@ -45,8 +45,9 @@
                     android:layout_width="335dp"
                     android:layout_height="48dp"
                     android:paddingStart="9dp"
+                    android:inputType="textEmailAddress"
                     android:background="@color/stream_ui_literal_transparent"
-                    android:hint="휴대폰 번호 또는 이메일 주소" />
+                    android:hint="이메일 주소" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,11 +70,38 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="또는"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="47dp"
+                android:background="@drawable/text_tool">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phonenum_login"
+                    android:layout_width="335dp"
+                    android:layout_height="48dp"
+                    android:paddingStart="9dp"
+                    android:inputType="textEmailAddress|phone"
+                    android:background="@color/stream_ui_literal_transparent"
+                    android:hint="전화번호" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/login_login_btn"
                 android:layout_width="326dp"
                 android:layout_height="61dp"
-                android:layout_marginTop="244dp"
+                android:layout_marginTop="140dp"
                 android:background="@drawable/skybtn"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"

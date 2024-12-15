@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.databinding.ActivityAddBirthBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -44,36 +43,25 @@ class AddBirthActivity : AppCompatActivity() {
             val birth = binding.addBirthText.text.toString().trim()
 
             if(birth.isNotEmpty()) {
-                saveToFirebase(email, phonenum, pwd, name, birth)
+                val intent = Intent(this, AgreeActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("phonenum", phonenum)
+                intent.putExtra("password", pwd)
+                intent.putExtra("name", name)
+                intent.putExtra("birth", birth)
+                startActivity(intent)
             } else {
                 binding.addBirthText.error = "생년월일을 선택하세요"
             }
         }
 
         binding.addBirthSkip.setOnClickListener {
-            saveToFirebase(email, phonenum, pwd, name, null)
+            val intent = Intent(this, AgreeActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("phonenum", phonenum)
+            intent.putExtra("password", pwd)
+            intent.putExtra("name", name)
+            startActivity(intent)
         }
-    }
-    private fun saveToFirebase(email: String?, phonenum: String?, pwd: String?, name: String?, birth: String?) {
-        val uid = System.currentTimeMillis().toString()
-        val userData = hashMapOf(
-            "uid" to uid,
-            "email" to email,
-            "phonenum" to phonenum,
-            "password" to pwd,
-            "name" to name,
-            "birth" to (birth ?: "null"),
-        )
-        firestore.collection("users")
-            .document(uid)
-            .set(userData)
-            .addOnSuccessListener {
-                val intent = Intent(this, AgreeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "회원 정보 저장 실패: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
     }
 }

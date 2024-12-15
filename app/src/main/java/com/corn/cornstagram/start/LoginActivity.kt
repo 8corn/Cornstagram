@@ -2,14 +2,17 @@ package com.corn.cornstagram.start
 
 import android.content.Intent
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.MainActivity
 import com.corn.cornstagram.R
+import com.corn.cornstagram.VerificationActivity
 import com.corn.cornstagram.databinding.ActivityLoginBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -22,10 +25,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -34,9 +41,21 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val TAG = this.javaClass.simpleName
     private var GOOGLE_LOGIN_CODE = 9001
-    private var googleSignInClient: GoogleSignInClient? = null
+    private lateinit var googleSignInClient: GoogleSignInClient
 
-    private var callbackManager: CallbackManager? = null
+    private lateinit var callbackManager: CallbackManager
+
+    private val googleSignInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account)
+            } catch (e: ApiException) {
+                Log.e(TAG, "Google Login 실패", e)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +66,15 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.loginLoginBtn.setOnClickListener {
-            signinAndSignup()
+            val emailId = binding.emailLogin.text.toString().trim()
+
+            if (emailId.isEmpty()) {
+                phoneSignin()
+            } else if (emailId.isNotEmpty()) {
+                emailSignin()
+            } else {
+                Toast.makeText(this, "로그인 방법을 선택하여 주십시오.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.loginGoogleIcon.setOnClickListener {
@@ -76,18 +103,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun printHashKey() {
         try {
-            val info: PackageInfo = packageManager.getPackageInfo(packageName, GET_SIGNATURES)
+            val info = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
 
-            val signatures = info.signingInfo?.apkContentsSigners
-            if (signatures != null) {
-                for (signature in signatures) {
-                    val md: MessageDigest = MessageDigest.getInstance("SHA")
-                    md.update(signature.toByteArray())
-                    val hashKey = String(Base64.encode(md.digest(), Base64.DEFAULT))
-                    Log.i("Tag", "printHashKey() Hash Key: $hashKey")
-                }
-            } else {
-                Log.e("Tag", "No signatures found!")
+            val signingInfo = info.signingInfo
+            val signatures = signingInfo?.apkContentsSigners ?: arrayOf()
+            for (signature in signatures) {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val hashKey = Base64.encodeToString(md.digest(), Base64.DEFAULT)
+                Log.i(TAG, "Hash Key: $hashKey")
             }
         } catch (e: NoSuchAlgorithmException) {
             Log.e("Tag", "printHashKey()", e)
@@ -97,12 +121,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun googleLogin() {
-        val signInIntent = googleSignInClient?.signInIntent
-        if (signInIntent != null) {
-            startActivityForResult(signInIntent, GOOGLE_LOGIN_CODE)
-        } else {
-            Log.e(TAG, "GoogleSignInClient is null")
-        }
+        val signInIntent = googleSignInClient.signInIntent
+        googleSignInLauncher.launch(signInIntent)
     }
 
     private fun handleFacebookAccessToken(token: AccessToken?) {
@@ -137,22 +157,6 @@ class LoginActivity : AppCompatActivity() {
             })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == GOOGLE_LOGIN_CODE) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account)
-            } catch (e: ApiException) {
-                Log.e(TAG, "Google 로그인 실패", e)
-            }
-        }
-    }
-
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
         val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
         auth.signInWithCredential(credential)
@@ -165,22 +169,105 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun signinAndSignup() {
-        if (binding.emailLogin.text.toString().isEmpty() || binding.pwdLogin.text.toString().isEmpty()) {
-            Toast.makeText(this, "아이디와 비밀번호를 입력해주시오.", Toast.LENGTH_SHORT).show()
+    private fun emailSignin() {
+        val emailId = binding.emailLogin.text.toString().trim()
+        val password = binding.pwdLogin.text.toString().trim()
+
+        if (emailId.isEmpty()) {
+            Toast.makeText(this, "이메일을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
-        auth.signInWithEmailAndPassword(binding.emailLogin.text.toString(), binding.pwdLogin.text.toString())
+
+        if (isEmail(emailId)) {
+            signInEmail(emailId, password)
+        } else {
+            Toast.makeText(this, "유효하지 않은 이메일입니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun phoneSignin() {
+        val phonenum = binding.phonenumLogin.text.toString().trim()
+
+        if (phonenum.isEmpty()) {
+            Toast.makeText(this, "전화번호를 입력해주세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (isPhoneNum(phonenum)) {
+            signInPhone(phonenum)
+        } else {
+            Toast.makeText(this, "유효하지 않은 전화번호입니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun isEmail(emailId: String): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return emailId.matches(emailPattern.toRegex())
+    }
+
+    private fun isPhoneNum(phonenum: String): Boolean {
+        val phonePattern = "^[+]?[0-9]{10,15}\$"
+        return phonenum.matches(phonePattern.toRegex())
+    }
+
+    private fun signInEmail(loginId: String, password: String) {
+        if (password.isEmpty()) {
+            Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        auth.signInWithEmailAndPassword(loginId, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     moveMainPage(task.result?.user)
                 } else {
                     task.exception?.let { exception ->
-                        Log.e(TAG,"Authentication error", exception)
-                        Toast.makeText(this, "로그인 오류: ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
+                        Log.e(TAG, "이메일 로그인 오류", exception)
+                        Toast.makeText(this, "로그인 실패 : ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+    }
+
+    private fun signInPhone(phonenum: String) {
+        if (phonenum.isEmpty()) {
+            Toast.makeText(this, "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phonenum)
+            .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                    auth.signInWithCredential(credential)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                moveMainPage(task.result?.user)
+                            } else {
+                                task.exception?.let { exception ->
+                                    Log.e(TAG, "전화번호 인증 실패", exception)
+                                    Toast.makeText(this@LoginActivity, "로그인 실패 : ${exception.localizedMessage}" ,Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                }
+
+                override fun onVerificationFailed(e: FirebaseException) {
+                    Log.e(TAG, "전화번호 인증 실패", e)
+                    Toast.makeText(this@LoginActivity, "전화번호 인증 실패: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
+                    Log.d(TAG, "인증 코드 전송됨: $verificationId")
+                    val intent = Intent(this@LoginActivity, VerificationActivity::class.java)
+                    intent.putExtra("verificationId", verificationId)
+                    startActivity(intent)
+                }
+            })
+            .build()
+
+        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     private fun moveMainPage (user: FirebaseUser?) {

@@ -52,10 +52,10 @@ class AgreeActivity : AppCompatActivity() {
         }
 
         binding.agreeNextBtn.setOnClickListener {
-            if (isGpsChecked && isUseChecked && isDataChecked) {
+            if (!isGpsChecked && !isUseChecked && !isDataChecked) {
                 val intent = Intent(this, AddAkaActivity::class.java)
                 startActivity(intent)
-            } else if (isAllChecked){
+            } else if (!isAllChecked){
                 val intent = Intent(this, AddAkaActivity::class.java)
                 startActivity(intent)
             } else {

@@ -8,12 +8,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corn.cornstagram.databinding.ActivityAddAkaBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AddAkaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddAkaBinding
+    private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-    private val existingAkaNames = listOf("김정권", "김철권")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,14 @@ class AddAkaActivity : AppCompatActivity() {
         binding = ActivityAddAkaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+
+        val name = intent.getStringExtra("name")
+        val email = intent.getStringExtra("email")
+        val phonenum = intent.getStringExtra("phonenum")
+        val pwd = intent.getStringExtra("password")
+        val birth = intent.getStringExtra("birth")
 
         binding.addAkaName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -29,12 +37,15 @@ class AddAkaActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val akaName = s.toString()
 
-                if (existingAkaNames.contains(akaName)) {
+                val allowedPattern = Regex("^[a-zA-Z0-9!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?~]+$")
+                if (!akaName.matches(allowedPattern)) {
+                    binding.addAkaErrortxt.text = "영어, 숫자, 특수문자만 입력 가능합니다."
                     binding.addAkaErrortxt.visibility = View.VISIBLE
-                    binding.addAkaNextbtn.isEnabled = false
+                    binding.addAkaErrortxt.isEnabled = false
                 } else {
                     binding.addAkaErrortxt.visibility = View.INVISIBLE
-                    binding.addAkaNextbtn.isEnabled = true
+
+                    checkAkaInFirebase(akaName)
                 }
             }
 
@@ -44,23 +55,31 @@ class AddAkaActivity : AppCompatActivity() {
         binding.addAkaNextbtn.setOnClickListener {
             val akaName = binding.addAkaName.text.toString().trim()
 
-            saveDataToFirebase(akaName)
-
             val intent = Intent(this, CheckAkaActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("phonenum", phonenum)
+            intent.putExtra("password", pwd)
+            intent.putExtra("name", name)
+            intent.putExtra("birth", birth)
             intent.putExtra("akaname", akaName)
             startActivity(intent)
         }
     }
 
-    private fun saveDataToFirebase(akaname: String) {
-        val uid = System.currentTimeMillis().toString()
-        val userData = hashMapOf("uid" to uid, "akaname" to akaname)
-
+    private fun checkAkaInFirebase(akaname: String) {
         firestore.collection("users")
-            .document(uid)
-            .set(userData)
+            .whereEqualTo("akaname", akaname)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    binding.addAkaErrortxt.visibility = View.VISIBLE
+                    binding.addAkaErrortxt.isEnabled = false
+                } else {
+                    binding.addAkaErrortxt.visibility = View.INVISIBLE
+                }
+            }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "닉네임을 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "에러 : ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }
